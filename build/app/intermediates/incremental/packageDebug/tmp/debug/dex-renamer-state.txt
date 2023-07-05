@@ -1,4 +1,4 @@
-#Sun Jul 02 20:39:26 EEST 2023
+#Tue Jul 04 23:58:20 EEST 2023
 base.0=F\:\\for_flutter\\games_organizing\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

@@ -11,6 +11,7 @@ import '../../../../core/resources/manager_color.dart';
 import '../../../../core/resources/manager_fonts.dart';
 import '../../../../core/resources/manager_styles.dart';
 import '../../../../core/widgets/main_button.dart';
+import '../../../../routes/routes.dart';
 import '../../../settings/presentation/view/widget/custom_list_tile.dart';
 import '../controller/coffee_details_controller.dart';
 
@@ -373,6 +374,7 @@ class CoffeDetailsView extends StatelessWidget {
                   height: ManagerHeight.h8,
                 ),
                 mainButton(
+                  onPressed: ()=> Get.toNamed(Routes.drinkMenuView),
                   minWidth: double.infinity,
                   height: ManagerHeight.h48,
                   color: ManagerColors.primaryColor,

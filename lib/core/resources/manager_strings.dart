@@ -77,7 +77,7 @@ class ManagerStrings {
   static const String gameCoffees = ' كافيهات لعبة ';
   static const String hello = " مرحبًا, ";
   static const String currentPosstion = 'موقعك الحالي';
-  static const String searchTextFieldHint = '....إبحث عن الكافي الذي تريده';
+  static const String searchTextFieldHint = 'إبحث عن الكافي الذي تريده ....';
   static const String real = 'ريال ';
   static const String player = 'لاعب ';
   static const String open = 'مفتوح ';

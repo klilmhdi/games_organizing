@@ -13,6 +13,5 @@ class HomeViewConteroller extends GetxController{
    GameCard(
     gameModel: GameModel(name: ManagerStrings.chessGame,image:ManagerAssets.chessGame,),
   ),
-  
-];
+  ];
 }

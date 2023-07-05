@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:games_organizing/features/coffe_details/presenation/View/widgets/avatars_row.dart';
+import 'package:games_organizing/routes/routes.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import '../../../../../core/resources/manager_assets.dart';
 import '../../../../../core/resources/manager_color.dart';
 import '../../../../../core/resources/manager_fonts.dart';
@@ -13,6 +17,7 @@ class CoffeeTablesList extends StatelessWidget {
   CoffeeModel? coffeeModel;
   int? index;
   Function()? onPressed;
+
   CoffeeTablesList({
     this.coffeeModel,
     this.index = 0,
@@ -52,8 +57,7 @@ class CoffeeTablesList extends StatelessWidget {
             height: ManagerHeight.h60,
             width: ManagerWidth.w80,
             child: Image.asset(
-              ManagerAssets.tables,
-              fit: BoxFit.cover,
+              "assets/images/chair.png",
             ),
           ),
           Column(
@@ -95,9 +99,10 @@ class CoffeeTablesList extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: mainButton(
-              onPressed: onPressed,
+              onPressed: ()=> Get.toNamed(Routes.bookingTableView),
               radius: ManagerRadius.r8,
-              minWidth: double.infinity, //ManagerWidth.w120,
+              minWidth: double.infinity,
+              //ManagerWidth.w120,
               height: ManagerHeight.h32,
               color: ManagerColors.primaryColor,
               child: Text(

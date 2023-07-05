@@ -3,10 +3,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:games_organizing/core/extensions/extensions.dart';
 import 'package:games_organizing/core/resources/manager_fonts.dart';
 import 'package:games_organizing/core/resources/manager_styles.dart';
-import '../../../../../core/resources/manager_color.dart';
-import '../../../../../core/resources/managers_size.dart';
-import '../../../domain/gender_model.dart';
+import '../../../../../../core/resources/manager_color.dart';
+import '../../../../../../core/resources/managers_size.dart';
 import '../../controller/registration_controller.dart';
+import '../../model/gender_model.dart';
 
 Widget genderItem(
     {BuildContext? context,

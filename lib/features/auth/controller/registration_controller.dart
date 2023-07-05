@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:games_organizing/core/extensions/extensions.dart';
 import 'package:games_organizing/core/resources/manager_assets.dart';
-import 'package:games_organizing/features/auth/domain/gender_model.dart';
+import 'package:games_organizing/features/auth/model/gender_model.dart';
 import 'package:get/get.dart';
 import '../../../../core/resources/manager_color.dart';
 import '../../../../routes/routes.dart';

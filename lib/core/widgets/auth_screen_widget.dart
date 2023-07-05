@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../features/auth/presentaion/view/widgets/custom_paint_child.dart';
-import '../../features/auth/presentaion/view/widgets/login_custom_paint.dart';
+
+import '../../features/auth/view/widget/custom_paint_child.dart';
+import '../../features/auth/view/widget/login_custom_paint.dart';
 import '../resources/managers_size.dart';
 
 // ignore: must_be_immutable

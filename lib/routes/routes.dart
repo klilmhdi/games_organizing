@@ -1,5 +1,5 @@
 import 'package:games_organizing/config/dependency_injection.dart';
-import 'package:games_organizing/features/auth/presentaion/view/login_view.dart';
+import 'package:games_organizing/features/booking_table_view/controller/booking_controller.dart';
 import 'package:games_organizing/features/challenges/presentation/view/challenges_view.dart';
 import 'package:games_organizing/features/coffe_details/presenation/View/coffee_details.dart';
 import 'package:games_organizing/features/forgotPassword/presentaion/view/forgot_password_view.dart';
@@ -10,7 +10,12 @@ import 'package:games_organizing/features/settings/presentation/view/settings_vi
 import 'package:games_organizing/features/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 import '../core/resources/manager_strings.dart';
-import '../features/auth/presentaion/view/register_view.dart';
+import '../features/auth/view/login_view.dart';
+import '../features/auth/view/register_view.dart';
+import '../features/booking_table_view/view/booking_table_view.dart';
+import '../features/challenges/presentation/widgets/cheer_challenge_setting.dart';
+import '../features/drinks_menu/view/drink_menu_view.dart';
+import '../features/drinks_menu/view/drink_menu_view.dart';
 import '../features/email_code_verification/presentation/view/verification_view.dart';
 import '../features/notification/presentation/view/notification_view.dart';
 import '../features/out_bording/presentation/view/out_boarding_view.dart';
@@ -21,7 +26,6 @@ class Routes {
   static const String outBoardingView = '/out_boarding_view';
   static const String loginView = '/login_view';
   static const String registerView = '/register_view';
-  // static const String chooseAccountView = '/choose_account';
   static const String forgotPasswordView = '/forgot_password_view';
   static const String verificatinView = '/verification_view.dart';
   static const String resetPasswordView = '/reset_password.dart';
@@ -32,6 +36,9 @@ class Routes {
   static const String settingsView = '/settings_view.dart';
   static const String nearCoffeesView = '/near_coffees.dart';
   static const String coffeeDetailsView = '/coffee_details.dart';
+  static const String bookingTableView = '/booking_table_view.dart';
+  static const String drinkMenuView = '/drink_menu_view.dart.dart';
+  static const String cheerChallengeSettingView = '/cheer_challenge_setting.dart';
 }
 
 class RouteGenerator {
@@ -43,9 +50,6 @@ class RouteGenerator {
       case Routes.outBoardingView:
         initOutBoarding();
         return MaterialPageRoute(builder: (_) => const OutBordingView());
-      // case Routes.chooseAccountView:
-        // initChooseAccountsView();
-        // return MaterialPageRoute(builder: (_) => const ChooseAccountView());
       case Routes.loginView:
         initLoginView();
         return MaterialPageRoute(builder: (_) => LoginView());
@@ -82,6 +86,15 @@ class RouteGenerator {
       case Routes.resetPasswordView:
         initResetPassView();
         return MaterialPageRoute(builder: (_) => ResetPasswordView());
+      case Routes.bookingTableView:
+        // initBookingTable();
+        return MaterialPageRoute(builder: (_) => bookingTableView());
+      case Routes.drinkMenuView:
+      // initBookingTable();
+        return MaterialPageRoute(builder: (_) => DrinkMenuView());
+      case Routes.cheerChallengeSettingView:
+      // initBookingTable();
+        return MaterialPageRoute(builder: (_) => CheerChallengeSettingView());
       default:
         return unDefinedRoute();
     }

@@ -17,7 +17,9 @@ import '../controller/near_coffees_controller.dart';
 
 class NearCoffee extends StatelessWidget {
   final GameModel? gameModel;
+
   const NearCoffee({super.key, this.gameModel});
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -88,7 +90,8 @@ class NearCoffee extends StatelessWidget {
                           width: ManagerWidth.w10,
                         ),
                         Text(
-                          'جدة, حي الحرية, شارع الإستقلال', //this parameter will be changed belongs to user data model
+                          'جدة, حي الحرية, شارع الإستقلال',
+                          //this parameter will be changed belongs to user data model
                           style: getRegularTextStyle(
                             fontSize: ManagerFontSize.s12,
                             color: ManagerColors.grey,
@@ -179,8 +182,10 @@ class NearCoffee extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return InkWell(
                             onTap: () {
-                              CoffeeDetailsController coffeeController = Get.put(CoffeeDetailsController());
-                              coffeeController.addMarkers(coffeeModel: controller.myCoffees[index]);
+                              CoffeeDetailsController coffeeController =
+                                  Get.put(CoffeeDetailsController());
+                              coffeeController.addMarkers(
+                                  coffeeModel: controller.myCoffees[index]);
                               Get.to(CoffeDetailsView(
                                 coffeeModel: controller.myCoffees[index],
                               ));

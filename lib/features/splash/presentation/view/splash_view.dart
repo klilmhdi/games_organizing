@@ -9,7 +9,6 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return scaffoldWithBackGroundImage(
     return Scaffold(
       backgroundColor: ManagerColors.primaryColor,
       body: Center(

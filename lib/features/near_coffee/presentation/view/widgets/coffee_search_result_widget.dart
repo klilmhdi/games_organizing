@@ -19,7 +19,7 @@ class SearchCoffeeResultWidget extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: ManagerHeight.h132,
+          height: ManagerHeight.h118,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(ManagerRadius.r8),
             color: ManagerColors.greyWhite,
@@ -30,7 +30,7 @@ class SearchCoffeeResultWidget extends StatelessWidget {
                 width: ManagerWidth.w8,
               ),
               Container(
-                width: ManagerWidth.w120,
+                width: ManagerWidth.w118,
                 height: ManagerHeight.h118,
                 decoration: BoxDecoration(
                   image: DecorationImage(

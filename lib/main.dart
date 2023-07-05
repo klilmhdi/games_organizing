@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'config/constants.dart';
 import 'config/dependency_injection.dart';
+import 'core/prefs/shared_preferenced.dart';
 
-void main() {
+void main() async{
   initModul();
+  await SharedPrefController().initPreferences();
   runApp(MyApp());
 }
 

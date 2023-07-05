@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:games_organizing/core/enum/request_state.dart';
+import 'package:games_organizing/core/extensions/extensions.dart';
 import 'package:games_organizing/core/resources/manager_fonts.dart';
 import 'package:games_organizing/core/resources/manager_styles.dart';
 import 'package:games_organizing/core/resources/managers_size.dart';
 import 'package:games_organizing/routes/routes.dart';
 import 'package:get/get.dart';
-import '../../../../core/resources/manager_color.dart';
-import '../../../../core/resources/manager_strings.dart';
-import '../../../../core/validator/validator.dart';
-import '../../../../core/widgets/base_text_form_field.dart';
-import '../../../../core/widgets/main_button.dart';
-import '../../../../core/widgets/auth_screen_widget.dart';
+
+import '../../../../../core/resources/manager_color.dart';
+import '../../../../../core/resources/manager_strings.dart';
+import '../../../../../core/validator/validator.dart';
+import '../../../../../core/widgets/auth_screen_widget.dart';
+import '../../../../../core/widgets/base_text_form_field.dart';
+import '../../../../../core/widgets/main_button.dart';
+import '../../../core/prefs/shared_preferenced.dart';
 import '../controller/login_controller.dart';
 
 class LoginView extends StatelessWidget {
@@ -62,7 +67,7 @@ class LoginView extends StatelessWidget {
                   ),
                   baseTextFormField(
                     icon: const Icon(Icons.email),
-                    controller: controller.email,
+                    controller: controller.emailTextController,
                     hintText: ManagerStrings.email,
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) => _failedValidator.validateEmail(value),
@@ -79,7 +84,7 @@ class LoginView extends StatelessWidget {
                   ),
                   baseTextFormField(
                     icon: const Icon(Icons.lock),
-                    controller: controller.password,
+                    controller: controller.passwordTextController,
                     hintText: ManagerStrings.password,
                     keyboardType: TextInputType.visiblePassword,
                     prefixIcon: IconButton(
@@ -89,8 +94,7 @@ class LoginView extends StatelessWidget {
                       icon: controller.showIconVisible(),
                     ),
                     obscureText: !controller.passwordVisible,
-                    validator: (value) =>
-                        _failedValidator.validatePassword(value),
+                    validator: (value) => _failedValidator.validatePassword(value),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,14 +102,12 @@ class LoginView extends StatelessWidget {
                       mainButton(
                         child: Text(
                           ManagerStrings.forgotPassword,
-                          style: getRegularTextStyle(
-                              fontSize: ManagerFontSize.s14,
-                              color: ManagerColors.grey),
+                          style: getRegularTextStyle(fontSize: ManagerFontSize.s14, color: ManagerColors.grey),
                         ),
                         onPressed: () =>
-                            // Get.offAllNamed(Routes.forgotPasswordView),
-                            //just for test
-                            Get.offAllNamed(Routes.verificatinView),
+                        // Get.offAllNamed(Routes.forgotPasswordView),
+                        //just for test
+                        Get.offAllNamed(Routes.verificatinView),
                       ),
                       Row(
                         children: [
@@ -140,23 +142,7 @@ class LoginView extends StatelessWidget {
                   SizedBox(
                     height: ManagerHeight.h34,
                   ),
-                  mainButton(
-                    color: ManagerColors.primaryColor,
-                    height: ManagerHeight.h48,
-                    minWidth: double.infinity,
-                    elevation: 0.1,
-                    shapeBorder: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Text(
-                      ManagerStrings.signIn,
-                      style: getMediumTextStyle(
-                          fontSize: 14, color: ManagerColors.white),
-                    ),
-                    onPressed: () {
-                      //api login
-                      Get.offAllNamed(Routes.mainView);
-                    },
-                  ),
+                  _loginButton(context),
                   SizedBox(
                     height: ManagerHeight.h18,
                   ),
@@ -165,9 +151,7 @@ class LoginView extends StatelessWidget {
                     children: [
                       Text(
                         ManagerStrings.haveNotAccount,
-                        style: getRegularTextStyle(
-                            fontSize: ManagerFontSize.s14,
-                            color: ManagerColors.black),
+                        style: getRegularTextStyle(fontSize: ManagerFontSize.s14, color: ManagerColors.black),
                       ),
                       mainButton(
                         child: Text(
@@ -178,7 +162,7 @@ class LoginView extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          controller.gotoRigisterScreen();
+                          controller.goToRegisterScreen();
                         },
                       ),
                     ],
@@ -189,6 +173,117 @@ class LoginView extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+
+  Widget _loginButton(BuildContext context) {
+    return GetBuilder<LoginController>(
+      init: LoginController(),
+      builder: (controller) {
+        switch (controller.loginState) {
+          case RequestState.loading:
+            {
+              return Center(
+                child: SizedBox(
+                  height: 60.h,
+                  width: 60.h,
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+              );
+            }
+          case RequestState.done:
+            {
+              return mainButton(
+                color: ManagerColors.primaryColor,
+                height: ManagerHeight.h48,
+                minWidth: double.infinity,
+                elevation: 0.1,
+                shapeBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                child: Text(
+                  ManagerStrings.signIn,
+                  style: getMediumTextStyle(fontSize: 14, color: ManagerColors.white),
+                ),
+                onPressed: () {
+                  if (controller.formKey.currentState!.validate()) {
+                    {
+                      controller.login().then((value) {
+                        if (!value.status) {
+                          context.showFailDialog(title: "فشل عملية تسجيل الدخول", content: value.message);
+                          return;
+                        }
+                        if (!controller.rememberMeCheckBoxValue && value.status) {
+                          SharedPrefController()
+                              .saveUser(
+                              user: value.data!,
+                              password: controller.passwordTextController.text,
+                              rememberMe: controller.rememberMeCheckBoxValue)
+                              .then((value) {
+                            Get.offAllNamed(Routes.mainView);
+                          });
+                        }
+                        if (controller.rememberMeCheckBoxValue && value.status) {
+                          SharedPrefController()
+                              .saveUser(user: value.data!, password: controller.passwordTextController.text, rememberMe: true)
+                              .then((value) {
+                            Get.offAllNamed(Routes.mainView);
+                          });
+                        }
+                      });
+                    }
+                  }
+
+                },
+              );
+            }
+          case RequestState.error:
+            {
+              return mainButton(
+                color: Colors.red.withOpacity(0.4),
+                height: ManagerHeight.h48,
+                minWidth: double.infinity,
+                elevation: 0.1,
+                shapeBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                child: Text(
+                  ManagerStrings.signIn,
+                  style: getMediumTextStyle(fontSize: 14, color: ManagerColors.white),
+                ),
+                onPressed: () async {
+                  if (controller.formKey.currentState!.validate()) {
+                    {
+                      controller.login().then((value) {
+                        if (!value.status) {
+                          context.showFailDialog(title: "فشل عملية تسجيل الدخول", content: value.message);
+                          return;
+                        }
+                        if (!controller.rememberMeCheckBoxValue && value.status) {
+                          SharedPrefController()
+                              .saveUser(
+                              user: value.data!,
+                              password: controller.passwordTextController.text,
+                              rememberMe: controller.rememberMeCheckBoxValue)
+                              .then((value) {
+                            Get.offAllNamed(Routes.homeView);
+                          });
+                        }
+
+                        /// ===================================== > if remember Me = true save user
+                        if (controller.rememberMeCheckBoxValue && value.status) {
+                          SharedPrefController()
+                              .saveUser(user: value.data!, password: controller.passwordTextController.text, rememberMe: true)
+                              .then((value) {
+                            Get.offAllNamed(Routes.homeView);
+                          });
+                        }
+                      });
+                    }
+                  }
+                },
+              );
+            }
+        }
+      },
     );
   }
 }

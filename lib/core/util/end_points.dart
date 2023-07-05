@@ -1,21 +1,25 @@
-const LOGIN = "login";
-const REGISTER = "register";
-const LOGOUT = "logout";
+class Api{
+  static const String _baseUrl = "https://sharkna.online/api";
+
+  static const String LOGIN = "$_baseUrl/login";
+  static const String REGISTER = "$_baseUrl/register";
+  static const String LOGOUT = "$_baseUrl/logout";
 // from user
-const GETPROFILE = "users/profile";
-const UPDATEPROFILE = "users/profile/update";
-const FORGETPASSWORD = "users/forgotPassword";
-const VERIFYCODE = "users/verifyCode";
-const CHANGEPASSWORD = "users/changePassword";
+  static const String GETPROFILE = "$_baseUrl/users/profile";
+  static const String UPDATEPROFILE = "$_baseUrl/users/profile/update";
+  static const String FORGETPASSWORD = "$_baseUrl/users/forgotPassword";
+  static const String VERIFYCODE = "$_baseUrl/users/verifyCode";
+  static const String CHANGEPASSWORD = "$_baseUrl/users/changePassword";
 // from game
-const GAME = "games";
-const GETCOFFEEGAME = "getCafeGame";
+  static const String GAME = "$_baseUrl/games";
+  static const String GETCOFFEEGAME = "$_baseUrl/getCafeGame";
 // from caffee
-const GETALLCOFFEE = "getAllCafe";
-const TICKET = "ticket";
-const GETPRODUCTS = "getProducts";
-const GETCATEGORIES = "getCategories";
+  static const String GETALLCOFFEE = "$_baseUrl/getAllCafe";
+  static const String TICKET = "$_baseUrl/ticket";
+  static const String GETPRODUCTS = "$_baseUrl/getProducts";
+  static const String GETCATEGORIES = "$_baseUrl/getCategories";
 // from notification
-const NOTIFICATION = "notifications";
+  static const String NOTIFICATION = "$_baseUrl/notifications";
 // from terms
-const TERMS = "terms";
+  static const String TERMS = "$_baseUrl/terms";
+}

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:games_organizing/core/extensions/extensions.dart';
-import '../../../../../core/resources/manager_color.dart';
+import '../../../../../../core/resources/manager_color.dart';
 
 //Add this CustomPaint widget to the Widget Tree
 dynamic loginPaint({double? width, Widget? child}) {

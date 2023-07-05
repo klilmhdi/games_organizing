@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:games_organizing/features/auth/presentaion/controller/login_controller.dart';
+import 'package:games_organizing/features/auth/controller/login_controller.dart';
+import 'package:games_organizing/features/booking_table_view/controller/booking_controller.dart';
 import 'package:games_organizing/features/out_bording/presentation/controller/out_boarding_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
-import '../features/auth/presentaion/controller/registration_controller.dart';
-import '../features/choose_account/presentation/controller/choose_account_controller.dart';
+import '../features/auth/controller/registration_controller.dart';
 import '../features/email_code_verification/presentation/controller/verification_controller.dart';
 import '../features/forgotPassword/presentaion/controller/forgot_password_controller.dart';
 import '../features/main/presentation/controller/main_controller.dart';
@@ -35,21 +35,9 @@ disposeOutBoarding() {
   Get.delete<OutBoarddingController>();
 }
 
-// initChooseAccountsView() {
-//   disposeOutBoarding();
-//   Get.put<ChooseAccountController>(
-//     ChooseAccountController(),
-//   );
-// }
-
-// disposeChooseAccountsView() {
-//   Get.delete<ChooseAccountController>();
-// }
-
 initLoginView() {
   disposeRegisterView();
   disposeOutBoarding();
-  // disposeChooseAccountsView();
   Get.put<LoginController>(LoginController());
 }
 
@@ -84,9 +72,18 @@ disposeVerificationView() {
   Get.delete<VereificationController>();
 }
 
+disposeBookingTableView() {
+  Get.delete<BookingTableController>();
+}
+
+
 initResetPassView() {
   disposeVerificationView();
   Get.put<VereificationController>(VereificationController());
+}
+initBookingTable() {
+  // disposeBookingTableView();
+  Get.put<BookingTableController>(BookingTableController());
 }
 
 disposeResetPassView() {

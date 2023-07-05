@@ -26,6 +26,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "buttons_tabbar",
+      "rootUri": "file:///C:/Users/KhaleelMahdi/AppData/Local/Pub/Cache/hosted/pub.dev/buttons_tabbar-1.3.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "cached_network_image",
       "rootUri": "file:///C:/Users/KhaleelMahdi/AppData/Local/Pub/Cache/hosted/pub.dev/cached_network_image-3.2.3",
       "packageUri": "lib/",
@@ -135,9 +141,9 @@
     },
     {
       "name": "flutter_cache_manager",
-      "rootUri": "file:///C:/Users/KhaleelMahdi/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_cache_manager-3.3.0",
+      "rootUri": "file:///C:/Users/KhaleelMahdi/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_cache_manager-3.3.1",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.17"
     },
     {
       "name": "flutter_lints",
@@ -156,6 +162,12 @@
       "rootUri": "file:///C:/Users/KhaleelMahdi/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_screenutil-5.8.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_staggered_animations",
+      "rootUri": "file:///C:/Users/KhaleelMahdi/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_staggered_animations-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "flutter_svg",
@@ -231,9 +243,9 @@
     },
     {
       "name": "http",
-      "rootUri": "file:///C:/Users/KhaleelMahdi/AppData/Local/Pub/Cache/hosted/pub.dev/http-0.13.6",
+      "rootUri": "file:///C:/Users/KhaleelMahdi/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.1.0",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.0"
     },
     {
       "name": "http_parser",
@@ -362,8 +374,8 @@
       "languageVersion": "2.18"
     },
     {
-      "name": "pedantic",
-      "rootUri": "file:///C:/Users/KhaleelMahdi/AppData/Local/Pub/Cache/hosted/pub.dev/pedantic-1.11.1",
+      "name": "percent_indicator",
+      "rootUri": "file:///C:/Users/KhaleelMahdi/AppData/Local/Pub/Cache/hosted/pub.dev/percent_indicator-4.2.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -584,7 +596,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-07-02T17:56:11.435746Z",
+  "generated": "2023-07-04T14:44:35.053156Z",
   "generator": "pub",
   "generatorVersion": "3.0.3"
 }

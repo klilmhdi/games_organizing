@@ -12,6 +12,7 @@ import '../../../../core/resources/manager_styles.dart';
 import '../../../../core/util/size_util.dart';
 import '../../../../core/widgets/dashed_indicator.dart';
 import '../../../../core/widgets/main_button.dart';
+import '../../../../routes/routes.dart';
 
 class OutBordingView extends StatelessWidget {
   const OutBordingView({super.key});
@@ -32,18 +33,14 @@ class OutBordingView extends StatelessWidget {
                 return Column(
                   children: [
                     Expanded(
-                      child: Directionality(
-                        //this direction will be belong to the language
-                        textDirection: TextDirection.rtl,
-                        child: PageView(
-                          dragStartBehavior: DragStartBehavior.start,
-                          controller: controller.pageController,
-                          onPageChanged: (index) =>
-                              controller.setCurrentPageIndex(index),
-                          children: [
-                            ...controller.pagesContent,
-                          ],
-                        ),
+                      child: PageView(
+                        dragStartBehavior: DragStartBehavior.start,
+                        controller: controller.pageController,
+                        onPageChanged: (index) =>
+                            controller.setCurrentPageIndex(index),
+                        children: [
+                          ...controller.pagesContent,
+                        ],
                       ),
                     ),
                     SizedBox(
@@ -80,7 +77,7 @@ class OutBordingView extends StatelessWidget {
                       maintainState: true,
                       maintainAnimation: true,
                       child: mainButton(
-                        onPressed: () => controller.skipPage(),
+                        onPressed: () => Get.offAllNamed(Routes.loginView),
                         child: Text(
                           ManagerStrings.skip,
                           style: getRegularTextStyle(
